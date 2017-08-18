@@ -1,0 +1,30 @@
+---
+- name: Create directory for matterircd install
+  file:
+    name: "{{ matterircd_install_root }}"
+    state: directory
+
+- name: Download matterircd
+  get_url:
+    url: "https://github.com/42wim/matterircd/releases/download/v{{ matterircd_version }}/matterircd-linux64"
+    dest: "{{ matterircd_install_root }}/matterircd-{{ matterircd_version }}"
+    mode: 0755
+    checksum: "{{ matterircd_checksum }}"
+  notify: restart matterircd
+
+- name: Add matterircd.service
+  template:
+    src: matterircd.service.j2
+    dest: /etc/systemd/system/matterircd.service
+  notify: reload systemd and restart matterircd
+
+- name: Add matterircd user
+  user:
+    name: "{{ matterircd_user }}"
+    createhome: false
+
+- name: Start and enable matterircd
+  service:
+    name: matterircd
+    state: started
+    enabled: true

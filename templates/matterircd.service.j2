@@ -1,0 +1,18 @@
+[Unit]
+Description=Mattermost IRCd
+After=network.target
+
+[Service]
+Type=simple
+ExecStart={{ matterircd_install_root}}/matterircd-{{ matterircd_version}} -bind {{matterircd_bind}}
+{%- if matterircd_mmserver != '' %} -mmserver {{matterircd_mmserver}}{% endif %}
+{%- if matterircd_mmteam != '' %} -mmteam {{matterircd_mmteam}}{% endif %}
+{%- if matterircd_restrict != '' %} -restrict {{matterircd_restrict}}{% endif %}
+
+Restart=always
+RestartSec=10
+User={{ matterircd_user }}
+Group={{ matterircd_user }}
+
+[Install]
+WantedBy=multi-user.target

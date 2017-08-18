@@ -1,0 +1,9 @@
+---
+- name: reload systemd and restart matterircd
+  command: systemctl daemon-reload
+  notify: restart matterircd
+
+- name: restart matterircd
+  service:
+    name: matterircd
+    state: restarted
