@@ -6,7 +6,7 @@
 
 - name: Download matterircd
   get_url:
-    url: "https://github.com/42wim/matterircd/releases/download/v{{ matterircd_version }}/matterircd-linux64"
+    url: "https://github.com/42wim/matterircd/releases/download/v{{ matterircd_version }}/matterircd-linux-amd64"
     dest: "{{ matterircd_install_root }}/matterircd-{{ matterircd_version }}"
     mode: 0755
     checksum: "{{ matterircd_checksum }}"
