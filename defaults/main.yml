@@ -1,6 +1,6 @@
 ---
-matterircd_version: 0.14.0
-matterircd_checksum: 'sha256:48270C1264E8E689A961382E2A148FAFBFDAF986223FE7A3EB308D07CCCE6BAB'
+matterircd_version: 0.16.3
+matterircd_checksum: 'sha256:7ae2ecd0f8b472a4aec701b8b635df5dd1da7901c0ac122082a4949e33565704'
 
 matterircd_user: matterircd
 matterircd_bind: '127.0.0.1:6667'
